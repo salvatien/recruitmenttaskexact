@@ -2,7 +2,7 @@ public class Configuration {
     int totalAmountGameOverBoxes = 3;
     int totalAmountExtraLifeBoxes = 1;
     int totalAmountCashBoxes = 8;
-    int totalAmountBoxes = 12;
+    int totalAmountBoxes = totalAmountGameOverBoxes + totalAmountExtraLifeBoxes + totalAmountCashBoxes;
     double probabilityOfGettingExtraLifeBeforeGameOver
             = totalAmountExtraLifeBoxes / (double)(totalAmountExtraLifeBoxes + totalAmountGameOverBoxes);
     double averageWinOnCashBox = (1*100 + 2*20 + 5*5)/(double)totalAmountCashBoxes;

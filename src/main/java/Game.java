@@ -3,7 +3,7 @@ public class Game {
 
     private Configuration config;
 
-    public Game(Configuration config) {
+    Game(Configuration config) {
         this.config = config;
     }
 
@@ -15,7 +15,7 @@ public class Game {
         config = value;
     }
 
-    public double calculateEstimatedWin(boolean isSecondChanceUsed) {
+    double calculateEstimatedWin(boolean isSecondChanceUsed) {
         double res1 = config.probabilityOfGettingExtraLifeBeforeGameOver * this.estimatedWinWithExtraLife();
 
         double res2 = (1-config.probabilityOfGettingExtraLifeBeforeGameOver) * this.estimatedWinWithoutExtraLife();
@@ -56,15 +56,14 @@ public class Game {
         return estimatedWin;
     }
 
-
     // based on Hypergeometric distribution - checks the probability of not losing in number of consecutive dependant trials
-    public double probabilityOfNotLosing(int numberOfTrials, int numberOfBoxes, int numberOfGameOverBoxes) {
+    private double probabilityOfNotLosing(int numberOfTrials, int numberOfBoxes, int numberOfGameOverBoxes) {
         return binomialCoefficient(numberOfGameOverBoxes, 0)
                 * binomialCoefficient(numberOfBoxes - numberOfGameOverBoxes, numberOfTrials)
                 / (double)binomialCoefficient(numberOfBoxes, numberOfTrials);
     }
 
-    public static long binomialCoefficient(int n, int k )
+    private static long binomialCoefficient(int n, int k)
     {
         if(k>n)
             return 0;
@@ -77,5 +76,4 @@ public class Game {
         }
         return result;
     }
-
 }
